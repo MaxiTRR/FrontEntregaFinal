@@ -1,0 +1,157 @@
+<!--Educacion-->
+<section id="educacion">
+    <div  class="container-fluid">
+        <div class="text-center">
+            <h2 id="edu-title" class="h2">Educacion</h2>
+            <div class="row d-flex justify-content-center" >
+                <div class="col-lg-4" *ngFor="let row of education" >
+                    <div [ngClass]="dataTheme === false? 'edu-card-dark': 'edu-card-light'"
+                        class="card mx-auto"
+                        style="width: 18rem;"
+                        id="edu-card"
+                        >
+
+                        <img class="card-img-top mx-auto" id="udemy" [src]="row.logoEdu">
+                        
+                        <div [ngClass]="dataTheme === false? 'edu-card-dark': 'edu-card-light'">
+                            <h5 class="card-title">{{row.nombreInst}}</h5>
+                            <p class="card-text">{{row.periodoEdu}}</p>
+                            <p class="card-text">{{row.tituloEdu}}</p>
+                            <p class="card-text">{{row.descripcionEdu}}</p>
+
+                            <!-- Boton para editar el contenido-->
+                            <button
+                                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'" 
+                                id="edit" 
+                                type="button" 
+                                class="btn" data-bs-toggle="modal"
+                                data-bs-target="#exampleModalEduEdit"
+                                (click)="findEducation(row.id)"
+                                *ngIf="isLogged"
+                                >
+                                <fa-icon [icon]="faPencil"></fa-icon>
+                            </button>
+
+                            <!-- Boton para eliminar el contenido-->
+                            <button 
+                                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'"
+                                id="delete" 
+                                type="button"
+                                class="btn"
+                                (click)="deleteEducation(row.id)"
+                                *ngIf="isLogged"
+                                >
+                                <fa-icon [icon]="faXmark"></fa-icon>
+                            </button>
+                        </div>
+                    </div>
+                    <br><br>
+                </div>
+            </div>
+        
+            <!--Boton para agregar estudio-->
+            <button 
+                *ngIf="isLogged"
+                [ngClass]="dataTheme === false? 'btn-icon-darkedit': 'btn-icon-lightedit'"
+                class="btn-add-new"
+                data-bs-toggle="modal" data-bs-target="#exampleModalEdu"
+                >
+                Añadir nuevo estudio
+            </button>
+        </div>
+        
+        <!-- Modal para agregar Education -->
+        <div class="modal fade" id="exampleModalEdu" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Educacion Info
+                        </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario-->
+                        <form #f="ngForm" (ngSubmit)="onCreate()" novalidate>
+                            <div class="mb-3">
+                                <label for="nombreInst" class="form-typo form-label">¿Que educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="nombreInst" name="nombreInst" [(ngModel)]="nombreInst" required>
+                                <br>
+                                <label for="periodoEdu" class="form-typo form-label">¿Que año/periodo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="periodoEdu" name="periodoEdu" [(ngModel)]="periodoEdu" required>
+                                <br>
+                                <label for="tituloEdu" class="form-typo form-label">¿Que titulo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="tituloEdu" name="tituloEdu" [(ngModel)]="tituloEdu" required>
+                                <br>
+                                <label for="descripcionEdu" class="form-typo form-label">¿Que descripcion de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="descripcionEdu" name="descripcionEdu" [(ngModel)]="descripcionEdu" required="">
+                                <br>
+                                <label for="logoEdu" class="form-typo form-label">¿Que logo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="logoEdu" name="logoEdu" [(ngModel)]="logoEdu" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cancelEdu" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    data-bs-dismiss="modal"
+                                    >
+                                    Actualizar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal para editar Education -->
+        <div *ngIf="isLogged"  class="modal fade" id="exampleModalEduEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content"  *ngIf="eduToUpdate">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">
+                            Educacion Info
+                        </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Formulario-->
+                        <form #f="ngForm" (ngSubmit)="onUpdate(eduToUpdate.id)" novalidate>
+                            <div class="mb-3">
+                                <label for="nombreInst" class="form-typo form-label">¿Que educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="nombreInst" name="nombreInst" [(ngModel)]="eduToUpdate.nombreInst" required>
+                                <br>
+                                <label for="periodoEdu" class="form-typo form-label">¿Que año/periodo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="periodoEdu" name="periodoEdu" [(ngModel)]="eduToUpdate.periodoEdu" required>
+                                <br>
+                                <label for="tituloEdu" class="form-typo form-label">¿Que titulo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="tituloEdu" name="tituloEdu" [(ngModel)]="eduToUpdate.tituloEdu" required>
+                                <br>
+                                <label for="descripcionEdu" class="form-typo form-label">¿Que descripcion de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="descripcionEdu" name="descripcionEdu" [(ngModel)]="eduToUpdate.descripcionEdu" required="">
+                                <br>
+                                <label for="logoEdu" class="form-typo form-label">¿Que logo de educacion deseas agregar?</label>
+                                <input type="text" class="form-control" id="logoEdu" name="logoEdu" [(ngModel)]="eduToUpdate.logoEdu" required>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" id="cancelEdu" class="btn btn-secondary" data-bs-dismiss="modal">
+                                    Cancelar
+                                </button>
+                                <button 
+                                    type="submit"
+                                    class="btn btn-primary"
+                                    data-bs-dismiss="modal"
+                                    >
+                                    Actualizar
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

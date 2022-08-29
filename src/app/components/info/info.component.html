@@ -1,0 +1,103 @@
+<!-- Informacion Personal y Profesional-->
+<section>
+    <div id="info" class="container-fluid">
+        <div class="row pt-5 pb-5">
+            <div class="col-sm-6">
+                <div id="info" class="container-fluid">
+                    <div class="imagen">
+                        <div class="imagen-perfil" >
+                            <div id="pencil" class="container d-flex justify-content-center align-items-center"
+                            *ngFor="let row of infoPersonal">
+                                <img class="img-profile img-fluid mt-5 mb-5" [src]="row.imgProfile" alt="amazon">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 info-container d-flex align-items-center">
+                <div class="info-box">
+                    <div *ngFor="let row of infoPersonal">
+                        <p id="name">{{row.nombreInfo}}</p>
+                        <p id="profesion">{{row.titulo}}</p>
+                        <p id="desc-info"  class="mt-5">{{row.descripcion}}</p>
+                        <p id="ciudad"  class="mt-5"><span>Ciudad: </span>{{row.ciudad}}</p>
+                        <p id="fechaNac"  class="mt-5"><span>Fecha de Nac.: </span>{{row.fechaNac}}</p>
+                    </div>
+                    
+                    
+                    <!-- Boton para editar la Informacion-->
+                    <div class="pencil-info container-fluid" *ngFor="let row of infoPersonal">
+                        <button 
+                            [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" 
+                            id="edit"
+                            type="button"
+                            class="btn"
+                            data-bs-toggle="modal" 
+                            data-bs-target="#exampleModalInfoEdit"
+                            (click)="findInfoPersonal(row.id)"
+                            *ngIf="isLogged"
+                            >
+                            <fa-icon [icon]="faPencil"></fa-icon>
+                        </button>
+                
+            
+                        <!-- Modal para EDITA InfoPersonal -->
+                        <div *ngIf="isLogged" class="modal fade" id="exampleModalInfoEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content" *ngIf="infoToUpdate">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">
+                                            Info Personal
+                                        </h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- Formulario-->
+                                        <form #f="ngForm" (ngSubmit)="onUpdate(infoToUpdate.id)" novalidate>
+                                            <div class="mb-3">
+                                                <label for="nombreInfo" class="form-typo form-label">¿Que nombre deseas agregar?</label>
+                                                <input type="text" id="nombreInfo" name="nombreInfo" class="form-control" [(ngModel)]="infoToUpdate.nombreInfo" required>
+                                                <br>
+                                                <label for="titulo" class="form-typo form-label">¿Que titulo deseas agregar?</label>
+                                                <input type="text" id="titulo" name="titulo" class="form-control" [(ngModel)]="infoToUpdate.titulo" required>
+                                                <br>
+                                                <label for="descripcion" class="form-typo form-label">¿Que tipo de descripcion deseas agregar?</label>
+                                                <input type="text" id="descripcion" name="descripcion" class="form-control" [(ngModel)]="infoToUpdate.descripcion" required>
+                                                <br>
+                                                <label for="ciudad" class="form-typo form-label">¿Que ciudad deseas agregar?</label>
+                                                <input type="text" id="ciudad" name="ciudad" class="form-control" [(ngModel)]="infoToUpdate.ciudad" required>
+                                                <br>
+                                                <label for="fechaNac" class="form-typo form-label">¿Que fecha de nacimiento deseas agregar?</label>
+                                                <input type="text" id="fechaNac" name="fechaNac" class="form-control" [(ngModel)]="infoToUpdate.fechaNac" required>
+                                                <br>
+                                                <label for="imgProfile" class="form-typo form-label">¿Que imagen de perfil deseas agregar?</label>
+                                                <input type="text" id="imgProfile" name="imgProfile" class="form-control" [(ngModel)]="infoToUpdate.imgProfile" required>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" id="cancelInfo" class="btn btn-secondary" data-bs-dismiss="modal">
+                                                    Cancelar
+                                                </button>
+                                                <button type="submit" 
+                                                    class="btn btn-primary"
+                                                    data-bs-dismiss="modal"
+                                                    >
+                                                    Actualizar
+                                                </button>
+                                            </div>
+                                        </form>
+                                    ...
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+         
+    
+

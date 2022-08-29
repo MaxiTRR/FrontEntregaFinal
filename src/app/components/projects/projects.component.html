@@ -1,0 +1,150 @@
+<section>
+    <div id="project" class="container-fluid text-center">
+        <h2 id="project-title" class="h2">Proyectos</h2>
+        
+        <div [ngClass]="dataTheme === false? 'project-card-dark': 'project-card-light'"
+             class="container pb-5 mt-5"
+             *ngFor="let row of project"
+            >
+            <img class="img-fluid mt-5 mb-5" id="project-img" [src]="row.imgProject" alt="">
+            <a class="project-link" href=""><h3 id="project-title-page" class="pt-5">{{row.tituloPro}}</h3></a>
+            <p class="project-info mt-5">{{row.periodoPro}}</p>
+            <p class="project-info mt-1">{{row.tipoPro}}</p>
+            <p class="project-info mt-1">{{row.descripcionPro}}</p>
+            
+            <button
+                [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" 
+                id="edit" 
+                type="button" 
+                class="btn" data-bs-toggle="modal" data-bs-target="#exampleModalProEdit"
+                (click)="findProject(row.id)"
+                *ngIf="isLogged"
+
+                >
+                <fa-icon [icon]="faPencil"></fa-icon>
+            </button>
+
+            <!-- Boton para eliminar el contenido-->
+            <button 
+                [ngClass]="dataTheme=== false? 'btn-icon-dark': 'btn-icon-light'"
+                id="delete" 
+                type="button"
+                class="btn"
+                (click)="deleteProject(row.id)"
+                *ngIf="isLogged"
+                >
+                <fa-icon [icon]="faXmark"></fa-icon>
+            </button>
+        </div>
+    </div>
+
+    <div class="container-fluid text-center">
+         <!--Boton para agregar un nuevo proyecto-->
+         <button 
+            [ngClass]="dataTheme === false? 'btn-icon-darkAdd': 'btn-icon-lightAdd'"
+            class="btn-add-new"
+            data-bs-toggle="modal" data-bs-target="#exampleModalPro"
+            *ngIf="isLogged"
+            >
+            Añadir nuevo proyecto
+        </button>
+    </div>
+
+    <!-- Modal para agregar Project -->
+    <div class="modal fade" id="exampleModalPro" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Proyecto Info
+                    </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario-->
+                    <form #f="ngForm" (ngSubmit)="onCreate()" novalidate>
+                        <div class="mb-3">
+                            <label for="tituloPro" class="form-typo form-label">¿Que proyecto deseas agregar?</label>
+                            <input type="text" id="tituloPro" name="tituloPro" class="form-control" [(ngModel)]="tituloPro" required>
+                            <br>
+                            <label for="tipoPro" class="form-typo form-label">¿Que tipo de proyecto deseas agregar?</label>
+                            <input type="text" id="tipoPro" name="tipoPro" class="form-control" [(ngModel)]="tipoPro" required>
+                            <br>
+                            <label for="periodoPro" class="form-typo form-label">¿Que año/periodo de esete proyecto deseas agregar?</label>
+                            <input type="text" id="periodoPro" name="periodoPro" class="form-control" [(ngModel)]="periodoPro" required>
+                            <br>
+                            <label for="descripcionPro" class="form-typo form-label">¿Que descripcion de este proyecto deseas agregar?</label>
+                            <input type="text" id="descripcionPro" name="descripcionPro" class="form-control" [(ngModel)]="descripcionPro" required>
+                            <label for="imgProject" class="form-typo form-label">¿Que imagen de este proyecto deseas agregar?</label>
+                            <input type="text" id="imgProject" name="imgProject" class="form-control" [(ngModel)]="imgProject" required>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancelPro" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button 
+                                class="btn btn-primary"
+                                >
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                ...
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+     <!-- Modal para editar Project -->
+     <div *ngIf="isLogged" class="modal fade" id="exampleModalProEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" *ngIf="proToUpdate">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Proyecto Info
+                    </h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario-->
+                    <form #f="ngForm" (ngSubmit)="onUpdate(proToUpdate.id)" novalidate>
+                        <div class="mb-3">
+                            <label for="tituloPro" class="form-typo form-label">¿Que proyecto deseas agregar?</label>
+                            <input type="text" id="tituloPro" name="tituloPro" class="form-control" [(ngModel)]="proToUpdate.tituloPro" required>
+                            <br>
+                            <label for="periodoPro" class="form-typo form-label">¿Que año/periodo de esete proyecto deseas agregar?</label>
+                            <input type="text" id="periodoPro" name="periodoPro" class="form-control" [(ngModel)]="proToUpdate.periodoPro" required>
+                            <br>
+                            <label for="tipoPro" class="form-typo form-label">¿Que tipo de proyecto deseas agregar?</label>
+                            <input type="text" id="tipoPro" name="tipoPro" class="form-control" [(ngModel)]="proToUpdate.tipoPro" required>
+                            <br>
+                            <label for="descripcionPro" class="form-typo form-label">¿Que descripcion de este proyecto deseas agregar?</label>
+                            <input type="text" id="descripcionPro" name="descripcionPro" class="form-control" [(ngModel)]="proToUpdate.descripcionPro" required>
+                            <br>
+                            <label for="imgProject" class="form-typo form-label">¿Que imagen de este proyecto deseas agregar?</label>
+                            <input type="text" id="imgProject" name="imgProject" class="form-control" [(ngModel)]="proToUpdate.imgProject" required>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancelPro" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button 
+                                class="btn btn-primary"
+                                data-bs-dismiss="modal"
+                                >
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                ...
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+    
+

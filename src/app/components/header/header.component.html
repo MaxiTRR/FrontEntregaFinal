@@ -1,0 +1,63 @@
+<section id="Navegacion">
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark">
+        <div id="items" class="container">
+            <a class="navbar-brand" href="https://www.argentina.gob.ar/produccion/transformacion-digital-y-economia-del-conocimiento/argentina-programa">
+                <img src="../../../assets/argentina-programa.png" class="logo" alt="Logo Argentina Programa">
+            </a>
+            <span id="hashtag">#YoProgramo</span>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <div class="navbar-nav ms-auto">
+                    <div class="social-links">
+                        <div class="buttons container-fluid">
+                            <a href="https://www.facebook.com/"><fa-icon class="social-icon" [icon]="faFacebook"></fa-icon></a>
+                        </div>
+                        <div class="buttons container-fluid">
+                            <a href="https://ar.linkedin.com/"><fa-icon class="social-icon" [icon]="faLinkedin"></fa-icon></a>
+                        </div>
+                        <div class="buttons container-fluid">
+                            <a href="https://github.com/"><fa-icon class="social-icon" [icon]="faGithub"></fa-icon></a>
+                        </div>
+                        <div class="buttons container-fluid">
+                            <a href="https://www.instagram.com/"><fa-icon class="social-icon" [icon]="faInstagram"></fa-icon></a>
+                        </div>
+                       
+                        <div id="buttons">
+                            <div  class="buttons container-fluid">
+                                <button id="" class="login btn btn-outline-success text-white" type="submit" (click)="login()" *ngIf="!isLogged">Login</button>
+    
+                                <button id="" class="login btn btn-outline-success text-white" type="submit" (click)="onLogout()" *ngIf="isLogged">Logout</button>
+                            </div>
+                        </div>
+                        
+                        <div class="buttons container-fluid">
+                            <!-- Boton para cabiar a Dark Theme-->
+                            <button 
+                            id="switch" 
+                            class="login btn btn-light" 
+                            type="submit"
+                            (click)="sendClickEvent()"
+                            >    
+                            <fa-icon class="switch-icon" [icon]="faLightbulb"></fa-icon>
+                            </button>
+                        </div>
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </nav>
+</section>
+
+<!-- Contenedor para el Banner-->
+<div class="d-flex align-items-center banner" id="banner">
+    <div class="container-fluid">
+        <p id="banner-name">Soy <span>Maximiliano.</span></p>
+        <p id="banner-text">Bienvenidos a mi portfolio</p>
+    </div>
+</div>

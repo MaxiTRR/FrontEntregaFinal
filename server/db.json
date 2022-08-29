@@ -1,0 +1,164 @@
+{
+  "usuario": [
+    {
+      "id": 1,
+      "nombre": "Maximiliano",
+      "apellido": "Torres",
+      "dni": 33256790,
+      "fechaNac": "20-08-1990"
+    }
+  ],
+  "direccion": [
+    {
+      "id": 1,
+      "pais": "Argentina",
+      "provincia": "Bs As",
+      "localidad": "CABA",
+      "domicilio": "Calle Falsa 123",
+      "codPostal": 1789
+    }
+  ],
+  "cuenta": [
+    {
+      "id": 1,
+      "email": "torres@yahoo.com.ar",
+      "userName": "MaxiTorres",
+      "password": 123456
+    },
+    {
+      "email": "torres@gmail.com",
+      "password": "123456",
+      "id": 2
+    },
+    {
+      "email": "torres@yahoo.com.ar",
+      "password": "123456",
+      "id": 3
+    }
+  ],
+  "infoPersonal": [
+    {
+      "id": 1,
+      "nombreInfo": "Torres, Maximiliano",
+      "titulo": "Full Stack developer jr",
+      "descripcion": "Hola! Mi nombre es Maximiliano, en el ultimo año comence mi viaje en el mundo de la programacion y desde ese momento nunca me detuve en mi formacion. ¿Queres saber como empece, donde me encuentro y cual va a ser mi proximo destino en esta travesia? Dale click y averiguemoslo juntos!",
+      "imgProfile": "URL_de_la_imagen"
+    }
+  ],
+  "educacion": [
+    {
+      "id": 1,
+      "nombreInst": "Udemy",
+      "periodoEdu": "Enero 2022 - Marzo 2022",
+      "tituloEdu": "Desarrollador en HTML y CSS",
+      "descripcionEdu": "lorem Ipsum",
+      "certificado": "URL_del_certificado",
+      "logo": "URL_del_logo_institucional"
+    },
+    {
+      "id": 2,
+      "nombreInst": "Fundacion Telefonica",
+      "periodoEdu": "Año 2021",
+      "tituloEdu": "Fundamentos de la Programacion",
+      "descripcionEdu": "Instructor Juan Carlos Perez"
+    },
+    {
+      "id": 3,
+      "nombreInst": "Argentina Programa",
+      "periodoEdu": "Año 2022",
+      "tituloEdu": "Full Stack Developer Jr.",
+      "descripcionEdu": "Gladys Laura Mercado"
+    },
+    {
+      "id": 4,
+      "nombreInst": "Oracle",
+      "periodoEdu": "Año 2022",
+      "tituloEdu": "Desarrollador JavaScript",
+      "descripcionEdu": "Instructor Julio Rodriguez"
+    },
+    {
+      "id": 5,
+      "nombreInst": "TEST",
+      "periodoEdu": "2020",
+      "tituloEdu": "iNFORMATICA",
+      "descripcionEdu": "."
+    }
+  ],
+  "skills": [
+    {
+      "id": 1,
+      "nombre": "HTML",
+      "nivel": 75
+    },
+    {
+      "id": 2,
+      "nombre": "CSS",
+      "nivel": 50
+    },
+    {
+      "id": 3,
+      "nombre": "JavaScript",
+      "nivel": 50
+    },
+    {
+      "id": 4,
+      "nombre": "Ingles",
+      "nivel": 50
+    },
+    {
+      "id": 5,
+      "nombre": "Python",
+      "nivel": 25
+    }
+  ],
+  "exp": [
+    {
+      "id": 1,
+      "lugar": "Amazon",
+      "periodo": "Junio 2021 - Diciembre 2021",
+      "area": "Front End",
+      "rol": "Desarrollador HTML y CSS",
+      "logo": "URL_del_logo_empresarial"
+    },
+    {
+      "id": 2,
+      "lugar": "Google",
+      "periodo": "Enero 2019 - Octubre 2022",
+      "area": "Back End",
+      "rol": "Desarrollador JAVA - SQL"
+    }
+  ],
+  "proyectos": [
+    {
+      "id": 1,
+      "tituloPro": "Veterinaria Cuki",
+      "tipoPro": "Desarrollo web HTML, CSS, JAVASCRIPT",
+      "periodoPro": "Año 2021",
+      "descripcionPro": "Pagina oficial de contacto de la Veterinaria Cuki, una de las veterinarias mas reconocidas de la Argentina",
+      "imgProyecto": "URL_de_captura"
+    },
+    {
+      "id": 2,
+      "tituloPro": "Concesionario Super Car",
+      "tipoPro": "Desarrollo HTML - CSS - JAVASCRIPT",
+      "periodoPro": "2021",
+      "descripcionPro": "Pagina oficial de la consesionaria Super Car, una de las concesionarias mas antiguas y reconocidas de  Capital Federal"
+    }
+  ],
+  "contacto": [
+    {
+      "id": 1,
+      "email": "torres@yahoo.com.ar",
+      "linkRedSocial": [
+        "https://www.instagram.com/"
+      ]
+    }
+  ],
+  "telefono": [
+    {
+      "id": 1,
+      "cel": 1536896520,
+      "otroTel": 1536985836
+    }
+  ]
+}

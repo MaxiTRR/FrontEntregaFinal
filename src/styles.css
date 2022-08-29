@@ -1,0 +1,493 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;700;900&display=swap');
+
+*{
+    font-family: 'Roboto', sans-serif;
+}
+
+/*LOGIN*/
+#login-page{
+    background-color: rgb(28, 26, 26);
+}
+
+
+/*Estilos generales*/
+.darkMode{
+    background-color: rgb(28, 26, 26);
+    color: white;
+}
+
+.lightkMode{
+    background-color: rgb(209, 191, 191);
+    color: black;
+}
+
+/*HEADER*/
+
+#hashtag{
+    letter-spacing: 15px;
+    color: #fff;
+}
+
+.logo{
+    width: auto;
+    height: 60px;
+}
+
+.links{
+    display: flex;
+}
+
+
+
+.social-links{
+    display: flex;
+}
+
+.social-icon{
+    color: #fff;
+    font-size: 3.125rem;
+    /*margin-right: 1rem;*/
+}
+
+
+
+@media (max-width: 360px){
+    .items{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    
+    .social-links{
+        flex-direction: column;
+    }
+
+    .navbar-toggler{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    } 
+}
+
+/*BOTONES LOGIN - LOGOUT*/
+.buttons{
+    display: flex;
+    justify-content: center;
+}
+
+.login{
+    display: block;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    font-size: 12px;
+}
+
+#switch{
+    border-radius: 200px;
+    /*margin-left: 20px;*/
+    color: black;
+    /*background-color: #000;*/
+    font-size: 40px;
+    padding: 0;
+    padding-left: 14px;
+}
+
+.switch-icon{
+    font-size: 3.125rem;
+    margin-right: 1rem;
+}
+
+#banner{
+    color: #fff;
+}
+
+.banner{
+    height:500px;
+    width: auto;
+    background: url("../src/assets/banner.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+#banner-name{
+    font-size: 2.75rem;
+    margin-left: 10px;
+    margin-top: 30px;
+    margin-bottom: 0;
+}
+
+#banner-name span{
+    color: rgb(193, 15, 15);
+    
+}
+
+#banner-text{
+    font-size: 2.75rem;
+    margin-left: 10px;
+}
+
+/*INFO PERSONAL*/
+.img-profile{
+    border-radius: 50%;
+}
+
+/*.imagen{
+    display: flex;
+    justify-content: center;
+}*/
+
+/*.imagen-perfil{
+    background-image: url("../src/assets/Torres, Maximiliano.jpg");
+    /* cambia estos dos valores para definir el tamaño de tu círculo */
+     /*height: 31.25rem;*/
+     /*width: 31.25rem;*/
+     /* los siguientes valores son independientes del tamaño del círculo */
+     /*background-size: cover;*/
+     /*border-radius: 50%;*/
+     /*background-size: 100% auto;*/
+     /*border: rgb(44, 185, 12) solid 1px; 
+}
+
+@media (max-width: 768px){
+    .imagen-perfil{
+        height: 15.625rem;
+        width: 15.625rem;
+    }
+}*/
+
+.info-container{
+    display: flex;
+    align-items: center;
+}
+
+.info-text{
+    height: auto;
+    display: flex;
+    align-items: flex-start;
+    flex-flow: column nowrap;
+}
+
+
+#name{
+    font-size: 3.125rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 15px;
+}
+
+#profesion{
+    font-size: 2rem;
+    letter-spacing: 15px;
+    
+}
+
+#desc-info{
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    border-left: 2px solid rgb(44, 185, 12);
+    padding-left: 10px;
+}
+
+#ciudad, #fechaNac{
+    font-size: 1rem;
+    letter-spacing: 5px;
+    padding-left: 10px;
+    border-left: 2px solid rgb(44, 185, 12);
+    
+}
+
+#ciudad span, #fechaNac span{
+    font-weight: 700;
+}
+
+@media (max-width: 768px){
+    #name{
+        font-size: 2.125rem;
+        letter-spacing: 10px;
+    }
+
+    #profesion{
+        font-size: 2rem;
+        letter-spacing: 10px;
+    }
+}
+
+/*EXPERIENCIA*/
+#exp{
+    margin-top: 80px;
+}
+
+#exp-title{
+    font-size:2rem;
+    font-weight: 700;
+    letter-spacing: 15px;
+    margin-top: 200px;
+}
+
+#exp-title::after, #exp-title::before{
+    content:'';
+    width: 200px;
+    height: 1px;
+    background-color: rgb(44, 185, 12);
+    display: inline-block;
+    margin: 20px;
+    vertical-align: middle;
+}
+
+.exp-title-enterprise{
+    font-size: 35px;
+    letter-spacing: 12px;
+}
+
+#amazon{
+    /*width: 22.688rem;
+    height: 6.484rem;*/
+    width: 50%;
+    height: 50%;
+
+}
+
+.exp-img{
+    display: flex;
+    justify-content: center;
+    
+}
+
+.exp-info{
+    padding-left: 10px;
+    border-left: 2px solid rgb(44, 185, 12);
+}
+
+/*EDUCACION*/
+#educacion{
+    margin-top: 200px;
+    margin-bottom: 200px;
+    display: flex;
+    justify-content: center;
+}
+
+#udemy{
+    width: 10.688rem;
+    height: 6.484rem;
+    margin-top: 48px;
+    margin-bottom: 48px;
+}
+
+#edu-title{
+    font-size:2rem;
+    font-weight: 700;
+    margin-bottom: 80px;
+    letter-spacing: 15px;
+}
+
+#edu-title::after, #edu-title::before{
+    content:'';
+    width: 200px;
+    height: 1px;
+    background-color: rgb(44, 185, 12);
+    display: inline-block;
+    margin: 20px;
+    vertical-align: middle;
+}
+
+#edu-title-inst{
+    font-size: 3.12rem;
+}
+
+/*Estilos Card*/
+.card-title{
+    font-size: 50px;
+}
+
+.edu-card-dark{
+    border-radius: 15px;
+    color: rgb(28, 26, 26);
+    background-color: #fff;
+}
+
+.edu-card-light{
+    border-radius: 15px;
+    color: #fff;
+    background-color: rgb(28, 26, 26);
+}
+
+#edit #delete{
+    background-color: transparent;
+    border: none;
+    /*color: #fff;*/
+    font-size: 2rem;
+    margin-right: 20px;
+}
+
+/*SKILLS*/
+#skills-title{
+    font-size:2rem;
+    font-weight: 700;
+    margin-bottom: 80px;
+    letter-spacing: 15px;
+}
+
+#skills-title::after, #skills-title::before{
+    content:'';
+    width: 200px;
+    height: 1px;
+    background-color: rgb(44, 185, 12);
+    display: inline-block;
+    margin: 20px;
+    vertical-align: middle;
+}
+
+.skills-card-dark{
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+.skills-card-light{
+    border: 1px solid #000;
+    border-radius: 15px;
+}
+
+.skill-title{
+    margin: 1.24rem 0;
+    text-align: center;
+}
+
+/*PROJECTS*/
+#project{
+    margin-top: 200px;
+}
+
+#project-title{
+    font-size:2rem;
+    font-weight: 700;
+    margin-bottom: 80px;
+    letter-spacing: 15px;
+}
+
+#project-title::after, #project-title::before{
+    content:'';
+    width: 200px;
+    height: 1px;
+    background-color: rgb(44, 185, 12);
+    display: inline-block;
+    margin: 20px;
+    vertical-align: middle;
+}
+
+.project-link{
+    text-decoration: none;
+    color: #fff;
+}
+
+#project-title-page{
+    font-size: 2rem;
+    letter-spacing: 15px;
+}
+
+
+.project-info{
+    font-size: 1.5rem;
+    letter-spacing: 5px;
+    padding-left: 10px;
+}
+
+.project-card-dark{
+    border: 1px solid #fff;
+    border-radius: 15px;
+}
+
+.project-card-light{
+    border: 1px solid #000;
+    border-radius: 15px;
+}
+
+#project-img{
+    /*width: 22.688rem;
+    height: 6.484rem;*/
+    width: 30%;
+    height: 30%;
+}
+
+/*FOOTER*/
+#footer p{
+    margin-bottom: 0;
+}
+
+.footer-info{
+    color: #ca2525
+}
+
+/* CLASES PARA EL MODAL*/
+
+.modal-title{
+    color: #000;
+}
+
+
+#edit1 #delete1{
+    background-color: transparent;
+    border: none;
+    /*color: #fff;
+    /*font-size: 2rem;*/
+    margin-right: 20px;
+}
+
+.btn-icon-darkedit{
+    color:rgb(28, 26, 26);
+    background-color: #fff;
+    
+}
+
+.btn-icon-lightedit{
+    color:#fff;
+    background-color: rgb(28, 26, 26);
+    
+}
+
+.btn-icon-dark{
+    color:#fff;
+    font-size: 2rem;
+}
+
+.btn-icon-light{
+    color:#000;
+    font-size: 2rem;
+}
+
+.btn-icon-darkAdd{
+    color:#000;
+}
+
+.btn-icon-lightAdd{
+    color:#fff;
+    background-color: rgb(28, 26, 26);
+}
+
+.modal-title{
+    color: #000;
+}
+
+.btn-add-new{
+    font-size: 20px;
+    border-radius: 30px;
+    margin-top: 60px;
+    padding: 20px;
+}
+
+#pencil{
+    height: 100%;
+}
+
+.form-typo{
+    color:black;
+    
+}
+
+
+
+
+
+
+

@@ -1,0 +1,168 @@
+<!-- Experiencia-->
+<section>
+
+    <h2 id="exp-title" class="h2 text-center">Experiencia</h2>
+
+    <div id="exp" class="container-fluid" *ngFor="let row of experiencia">
+        <div class="row">
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="exp-img">
+                    <img class="img-fluid mt-5 mb-5" id="amazon" [src]="row.logo" alt="amazon">
+                </div>
+            </div>
+
+            <div class="col-lg-6 d-flex justify-content-center align-items-center">
+                <div class="">
+                    <p class="exp-title-enterprise">{{row.lugar}}</p>
+                    <br>
+                    <p class="exp-info">{{row.periodo}}</p>
+                    <p class="exp-info">{{row.area}}</p>
+                    <p class="exp-info">{{row.rol}}</p>
+                </div>
+            </div>
+        </div>
+        <!-- Boton para editar el contenido-->
+        <div class="container-fluid">
+            <div class="text-center">
+                <button [ngClass]="dataTheme=== false? 'btn-icon-dark': 'btn-icon-light'" id="edit" type="button"
+                    class="btn"
+                    data-bs-toggle="modal" 
+                    data-bs-target="#exampleModalExpEdit"
+                    (click)="findExperience(row.id)"
+                    *ngIf="isLogged"
+                    >
+                    <fa-icon [icon]="faPencil"></fa-icon>
+                </button>
+
+                <!-- Boton para eliminar el contenido-->
+                <button [ngClass]="dataTheme === false? 'btn-icon-dark': 'btn-icon-light'" id="delete" type="button"
+                    class="btn"
+                    (click)="deleteExperience(row.id)"
+                    *ngIf="isLogged"
+                    >
+                    <fa-icon [icon]="faXmark"></fa-icon>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para agregar Experience-->
+    <div class="modal fade" id="exampleModalExp" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Experiencia Info
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario-->
+                    <form #f="ngForm" (ngSubmit)="onCreate()" novalidate>
+                        <div class="mb-3">
+                            <label for="lugar" class="form-typo form-label">¿Que experiencia deseas agregar?</label>
+                            <input type="text" class="form-control" id="lugar" name="lugar" [(ngModel)]="lugar" required>
+                            <br>
+                            <label for="periodo" class="form-typo form-label">¿Que año/periodo de experiencia
+                                deseas agregar?</label>
+                            <input type="text" class="form-control" id="periodo" 
+                            [(ngModel)]="periodo" name="periodo" required>
+                            <br>
+                            <label for="area" class="form-typo form-label">¿Que area de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="area"  class="form-control" 
+                            [(ngModel)]="area" name="area" required>
+                            <br>
+                            <label for="rol" class="form-typo form-label">¿Que rol de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="rol" class="form-control" 
+                                [(ngModel)]="rol" name="rol" required>
+                            <br>
+                            <label for="logo" class="form-typo form-label">¿Que logo de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="logo"  class="form-control"
+                            [(ngModel)]="logo" name="logo" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancelExp" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button class="btn btn-primary">
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                    ...
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal para EDITAR Experience-->
+    <div *ngIf="isLogged" class="modal fade" id="exampleModalExpEdit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content" *ngIf="expToUpdate">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">
+                        Experiencia Info
+                    </h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <!-- Formulario-->
+                    <form #f="ngForm" (ngSubmit)="onUpdate(expToUpdate.id)" novalidate>
+                        <div class="mb-3">
+                            <label for="lugar" class="form-typo form-label">¿Que experiencia deseas editar?</label>
+                            <input type="text" class="form-control" id="lugar" name="lugar" [(ngModel)]="expToUpdate.lugar" required>
+                            <br>
+                            <label for="periodo" class="form-typo form-label">¿Que año/periodo de experiencia
+                                deseas agregar?</label>
+                            <input type="text" class="form-control" id="periodo" 
+                            [(ngModel)]="expToUpdate.periodo" name="periodo" required>
+                            <br>
+                            <label for="area" class="form-typo form-label">¿Que area de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="area"  class="form-control" 
+                            [(ngModel)]="expToUpdate.area" name="area" required>
+                            <br>
+                            <label for="rol" class="form-typo form-label">¿Que rol de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="rol" class="form-control" 
+                                [(ngModel)]="expToUpdate.rol" name="rol" required>
+                            <br>
+                            <label for="logo" class="form-typo form-label">¿Que logo de experiencia deseas
+                                agregar?</label>
+                            <input type="text" id="logo"  class="form-control"
+                            [(ngModel)]="expToUpdate.logo" name="logo" required>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" id="cancelExp" class="btn btn-secondary" data-bs-dismiss="modal">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">
+                                Actualizar
+                            </button>
+                        </div>
+                    </form>
+                    ...
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+
+    <!--Boton para agregar nueva experiencia-->
+    <div class="container d-flex justify-content-center">
+        <button 
+            *ngIf="isLogged"
+            [ngClass]="dataTheme === false? 'btn-icon-darkAdd': 'btn-icon-lightAdd'"        class="btn-add-new mx-auto"
+            data-bs-toggle="modal" 
+            data-bs-target="#exampleModalExp">
+            Añadir nueva experiencia
+        </button>
+    </div>
+
+
+</section>
