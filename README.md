@@ -36,4 +36,6 @@ Este portfolio forma parte de la entrega final del curso Argentina Programa. El 
 
 -Al querer cargar imagenes al sitio, asi como otros tipos de links, no colocar links muy largos ya que no funcionan. Recomendable usar un acortador de links para asegurarse que los mismos puedar cargarse correctamente. Solo es posible subir archivos por links de urls (subida de archivos locales no esta implementado)
 
+- El archivo pdf Bitacora Portfolio es un breve recorrido manuscrito de la realizacion del portfolio comentando un poco cuestiones que sucedieron durante la realizacion del mismo.
+
 -Link del repositorio del Backend:  https://github.com/MaxiTRR/BackendEntregaFinal
